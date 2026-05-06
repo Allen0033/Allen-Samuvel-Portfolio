@@ -1,0 +1,239 @@
+/* --- Skills Page Storm Theme --- */
+.skills-page {
+  background: url('storm_bg.png') no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+.storm-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(15, 10, 30, 0.8), rgba(10, 5, 20, 0.95));
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Lightning Flash */
+.lightning-flash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: white;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Rain Particles */
+.rain-particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.raindrop {
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6));
+  width: 2px;
+  height: 30px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Skills Layout */
+.skills-page .skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .skills-page .skills-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Skill Cards (Screenshot Style) */
+.skills-page .skill-card {
+  background: rgba(30, 25, 55, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem 1.8rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skills-page .skill-card:hover {
+  transform: translateY(-5px);
+  background: rgba(40, 35, 75, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Header (Icon + Title) */
+.skills-page .skill-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.skills-page .skill-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.skills-page .skill-header h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Skill Lists */
+.skills-page .skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skills-page .skill-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.skills-page .skill-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--bullet-color, #fff);
+  box-shadow: 0 0 8px var(--bullet-color, #fff);
+}
+
+/* Category Specific Colors */
+.card-ai .skill-icon { background: #d946ef; }
+.card-ai .skill-list li::before { --bullet-color: #d946ef; }
+
+.card-prog .skill-icon { background: #0ea5e9; }
+.card-prog .skill-list li::before { --bullet-color: #0ea5e9; }
+
+.card-web .skill-icon { background: #22c55e; }
+.card-web .skill-list li::before { --bullet-color: #22c55e; }
+
+.card-iot .skill-icon { background: #f97316; }
+.card-iot .skill-list li::before { --bullet-color: #f97316; }
+
+.card-cloud .skill-icon { background: #8b5cf6; }
+.card-cloud .skill-list li::before { --bullet-color: #8b5cf6; }
+
+/* Table Section */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: rgba(30, 25, 55, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tools-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e2e8f0;
+  font-size: 1.05rem;
+}
+
+.tools-table th {
+  text-align: left;
+  padding: 1.2rem;
+  border-bottom: 2px solid #14b8a6; /* Teal border for table */
+  color: #14b8a6;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.tools-table td {
+  padding: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.3s ease;
+}
+
+.tools-table tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tools-table td strong {
+  color: #fff;
+  font-weight: 500;
+}
+
+.skills-page .section-title {
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] .skills-page {
+  background: url('storm_bg.png') no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+[data-theme="light"] .skills-page .storm-overlay {
+  background: linear-gradient(to bottom, rgba(50, 60, 80, 0.6), rgba(20, 30, 40, 0.8));
+}
+
+[data-theme="light"] .skills-page .skill-card,
+[data-theme="light"] .skills-page .table-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .skills-page .skill-header h3 {
+  color: #1e293b;
+}
+
+[data-theme="light"] .skills-page .skill-list li,
+[data-theme="light"] .tools-table {
+  color: #475569;
+}
+
+[data-theme="light"] .tools-table td strong {
+  color: #0f172a;
+}
+
+[data-theme="light"] .tools-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .tools-table tr:hover td {
+  background: rgba(0, 0, 0, 0.03);
+}

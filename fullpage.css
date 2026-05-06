@@ -1,0 +1,214 @@
+/* =============================================
+   FULLPAGE SCROLL – Layout & Section Styles
+   ============================================= */
+
+/* Each section occupies exactly the full viewport */
+.fp-section {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollable inner content, padded for nav */
+.fp-content {
+  padding: 7rem 5% 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+/* Vertically centered variant for Home/Contact */
+.fp-content.fp-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 6rem;
+}
+
+/* ---- Home Section BG ---- */
+.fp-bg-home {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ---- Scroll hint arrow (Home section) ---- */
+.fp-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 1.6rem;
+  animation: bounceDown 1.8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 1; }
+}
+
+/* ---- Footer inside last section ---- */
+.fp-footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--card-border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(15px);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ---- Overrides: bodies with .about-page, .skills-page must NOT set their own fixed bg ---- */
+.fp-section.about-page {
+  background: url('mars_bg.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll; /* overrides fixed so the fixed layout still works */
+}
+
+.fp-section.skills-page {
+  background: url('storm_bg.png') no-repeat center center;
+  background-size: cover;
+}
+
+.fp-section.earth-theme {
+  background: #020412;
+}
+
+.fp-section.contact-page {
+  background: transparent;
+}
+
+/* ---- Section-level overrides so inner backgrounds fill correctly ---- */
+.fp-section .space-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.fp-section .nature-bg-overlay {
+  z-index: -3;
+}
+
+#butterfly-container {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ---- Make sure about-page mars overlay is absolute not fixed ---- */
+.fp-section .mars-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(74,20,20,0.5), rgba(0,0,0,0.7));
+  z-index: -1;
+  pointer-events: none;
+}
+
+.fp-section .saturn-container {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  pointer-events: none;
+  width: 100%; height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+/* ---- Make sand-particles absolute inside section ---- */
+.fp-section .sand-particles {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ---- Storm overlay absolute ---- */
+.fp-section .storm-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fp-section .lightning-flash,
+.fp-section .rain-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---- Snow & winter lights ---- */
+.fp-section .snow-container,
+.fp-section .winter-lights,
+.fp-section .static-snowflake {
+  position: absolute;
+  pointer-events: none;
+}
+
+.fp-section .snow-container {
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.fp-section .winter-lights {
+  inset: 0;
+  z-index: 0;
+}
+
+.fp-section .static-snowflake {
+  font-size: 10rem;
+  color: rgba(142,202,230,0.06);
+  z-index: 0;
+  filter: blur(2px);
+}
+
+.fp-section .static-snowflake.top-left { top: -30px; left: -30px; }
+.fp-section .static-snowflake.bottom-right { bottom: -30px; right: -30px; }
+
+/* Ensure project/timeline content is above bg layers */
+.fp-section .fp-content { position: relative; z-index: 10; }
+
+/* ---- Scrollable inner overrides for tall sections ---- */
+.fp-section::-webkit-scrollbar { width: 4px; }
+.fp-section::-webkit-scrollbar-track { background: transparent; }
+.fp-section::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .fp-content { padding: 6rem 4% 2rem; }
+  .fp-content.fp-center { padding-top: 5rem; }
+  .fp-footer { padding: 1rem; font-size: 0.9rem; }
+
+  .fp-section.about-page .profile-right {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .fp-section.about-page .profile-right {
+    grid-template-columns: 1fr;
+  }
+  .hero-profile-flex { flex-direction: column; }
+  .hero-img-wrapper { width: 200px !important; height: 200px !important; }
+}

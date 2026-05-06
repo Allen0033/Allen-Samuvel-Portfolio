@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allen Samuvel A | Projects</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body class="projects-page winter-theme">
+  <div id="snow-container" class="snow-container"></div>
+  <div class="winter-lights"></div>
+  
+  <!-- Static Decorative Snowflakes -->
+  <div class="static-snowflake top-left">❄</div>
+  <div class="static-snowflake bottom-right">❄</div>
+
+  <div class="bg-container" id="bg-container">
+    <div class="celestial-body"></div>
+  </div>
+
+  <nav id="navbar">
+    <a href="index.html" class="logo">Allen<span>.</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div style="display: flex; align-items: center;">
+      <button class="theme-switch" id="theme-switch" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+        <i class="fa-solid fa-sun"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="projects">
+      <h1 class="section-title reveal">Featured <span>Projects</span></h1>
+      <div class="projects-grid">
+        
+        <div class="project-card reveal">
+          <div class="project-img-wrapper">
+            <img src="assets/project_1_object_detection_1777873938792.png" alt="AI Assistant Prototype" class="project-img">
+          </div>
+          <div class="project-content">
+            <h3>AI ASSISTANT FOR VISUALLY IMPAIRED PEOPLE</h3>
+            <div class="project-tech">
+              <span class="tech-tag">ESP32-CAM</span>
+              <span class="tech-tag">Ultrasonic Sensors</span>
+              <span class="tech-tag">Python (OpenCV)</span>
+              <span class="tech-tag">IoT</span>
+            </div>
+            <p class="project-desc">A wearable assistive device prototype using an ESP32-CAM and ultrasonic sensors to detect obstacles and identify objects, providing real-time audio feedback to the user.</p>
+            <ul class="project-features">
+              <li>Hardware-based object recognition</li>
+              <li>Ultrasonic obstacle detection</li>
+              <li>DIY wearable prototype design</li>
+              <li>Real-time audio assistance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img-wrapper">
+            <img src="assets/project_2_stethoscope_1777873993281.png" alt="Bluetooth Stethoscope" class="project-img">
+          </div>
+          <div class="project-content">
+            <h3>Bluetooth Digital Stethoscope</h3>
+            <div class="project-tech">
+              <span class="tech-tag">Embedded Systems</span>
+              <span class="tech-tag">Bluetooth Comm.</span>
+            </div>
+            <p class="project-desc">Designed a digital stethoscope capable of transmitting heart and lung sounds wirelessly through Bluetooth for remote monitoring.</p>
+            <ul class="project-features">
+              <li>Wireless audio transmission</li>
+              <li>Reduced signal noise</li>
+              <li>Real-time monitoring</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img-wrapper">
+            <img src="assets/project_3_telecalling_1777874017637.png" alt="AI Tele-Calling Agent" class="project-img">
+          </div>
+          <div class="project-content">
+            <h3>AI Tele-Calling Agent</h3>
+            <div class="project-tech">
+              <span class="tech-tag">AI Voice Gen</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">API Integration</span>
+            </div>
+            <p class="project-desc">Developed an AI-powered tele-calling agent capable of automatically calling customers and interacting using natural voice conversations.</p>
+            <ul class="project-features">
+              <li>AI-generated voice calls</li>
+              <li>Automated customer interaction</li>
+              <li>Call automation system</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Allen Samuvel A. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
