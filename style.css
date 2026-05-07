@@ -1454,8 +1454,12 @@ footer {
   }
 
   .hero-contact-bar span {
-    flex-direction: row;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+    word-break: break-word;
+    text-align: center;
   }
 
   .hero-tagline {
@@ -1505,6 +1509,34 @@ footer {
   .list-item {
     padding: 1rem 1.2rem;
     font-size: 0.95rem;
+  }
+
+  /* Interest Grid */
+  .interest-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .interest-box {
+    padding: 1.2rem;
+  }
+
+  /* Hide animations on very small screens for performance */
+  .saturn-container,
+  .butterfly,
+  .static-snowflake {
+    display: none !important;
+  }
+
+  .celestial-body {
+    width: 120px;
+    height: 120px;
+    opacity: 0.3;
+  }
+
+  .hero-img-wrapper {
+    width: 220px;
+    height: 220px;
   }
 
   .contact-card {
