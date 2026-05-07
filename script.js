@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Sand Particle Animation (Mars Theme - About Page) ---
   const sandContainer = document.getElementById('sand-particles');
   if (sandContainer) {
-    const particleCount = 60;
+    const particleCount = window.innerWidth <= 768 ? 25 : 60;
     for (let i = 0; i < particleCount; i++) {
       createSandParticle(sandContainer);
     }
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const rainContainer = document.getElementById('rain-particles');
   if (rainContainer) {
-    const dropCount = 100;
+    const dropCount = window.innerWidth <= 768 ? 50 : 100;
     for (let i = 0; i < dropCount; i++) {
       createRaindrop(rainContainer);
     }
@@ -143,11 +143,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Winter Theme Snow Animation (Projects Page) ---
   const snowContainer = document.getElementById('snow-container');
   if (snowContainer) {
-    // Create 3 layers for depth
-    const layers = [
-      { count: 50, size: [8, 12], speed: [15, 25], opacity: [0.2, 0.4], blur: '2px' }, // distant
-      { count: 30, size: [16, 24], speed: [10, 18], opacity: [0.4, 0.6], blur: '0px' }, // mid
-      { count: 15, size: [28, 40], speed: [6, 12], opacity: [0.6, 0.8], blur: '0px', rotate: true } // close
+    const isMobile = window.innerWidth <= 768;
+    // Create 3 layers for depth — halved on mobile
+    const layers = isMobile ? [
+      { count: 25, size: [8, 12], speed: [15, 25], opacity: [0.2, 0.4], blur: '2px' },
+      { count: 15, size: [16, 24], speed: [10, 18], opacity: [0.4, 0.6], blur: '0px' },
+      { count: 8,  size: [28, 40], speed: [6, 12],  opacity: [0.6, 0.8], blur: '0px', rotate: true }
+    ] : [
+      { count: 50, size: [8, 12], speed: [15, 25], opacity: [0.2, 0.4], blur: '2px' },
+      { count: 30, size: [16, 24], speed: [10, 18], opacity: [0.4, 0.6], blur: '0px' },
+      { count: 15, size: [28, 40], speed: [6, 12],  opacity: [0.6, 0.8], blur: '0px', rotate: true }
     ];
 
     layers.forEach(layer => {
@@ -207,13 +212,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Menu Toggle ---
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
+  const navOverlay = document.getElementById('nav-overlay');
+
+  function openMenu() {
+    navLinks.classList.add('active');
+    if (navOverlay) navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // Swap icon to X
+    const icon = hamburger.querySelector('i');
+    if (icon) { icon.className = 'fa-solid fa-xmark'; }
+  }
+
+  function closeMenu() {
+    navLinks.classList.remove('active');
+    if (navOverlay) navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    // Swap icon back to bars
+    const icon = hamburger.querySelector('i');
+    if (icon) { icon.className = 'fa-solid fa-bars'; }
+  }
 
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      if (navLinks.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
+
+    // Close on overlay click
+    if (navOverlay) {
+      navOverlay.addEventListener('click', closeMenu);
+    }
+
+    // Close when a link is clicked
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        closeMenu();
+      }
     });
   }
 
